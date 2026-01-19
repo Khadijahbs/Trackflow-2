@@ -2,7 +2,7 @@ from flask import Flask, render_template,redirect,request
 #from flask_scss import Scss 
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime 
-
+import os
 # Initialize Flask app
 app = Flask(__name__,static_folder='static', template_folder='templates')
 #Scss(app)
@@ -73,4 +73,7 @@ def edit(id:int):
 
 
 if __name__=="__main__":
+    port=int(os.environ.get("PORT",5000))
+    app.run(host="0.0.0.0",port=port)
+
     app.run(debug=True)
